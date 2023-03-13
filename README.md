@@ -29,22 +29,23 @@ serveless调研
 - kubeless
 - serverless
 
+来源：[深入浅出Serverless：3 Serverless的实现](https://cloud.tencent.com/developer/article/1514868?from=article.detail.1515319)
+
+![img](https://ask.qcloudimg.com/http-save/4069641/w5d8ligf32.jpeg?imageView2/2/w/2560/h/7000)
+
 ## 测评维度：
 
 1. 安装部署运维
 2. 整体资源占用
-3. 底层技术
-4. 文档
+3. 底层运行时技术
+4. 平台整体架构图
 5. 开发语言
-6. 打包机制
+6. 函数打包机制
 7. github人气
-8. 架构图
-9. 代码存储
-10. 函数/应用构建流程 (cicd)
+8. 函数代码存储, 函数/应用构建流程 (cicd)
+9. 文档
 
 ## serverless使用场景
-
-来源：https://www2.eecs.berkeley.edu/Pubs/TechRpts/2019/EECS-2019-3.pdf
 
 | 百分比 | 场景                                                         |
 | ------ | ------------------------------------------------------------ |
@@ -55,11 +56,39 @@ serveless调研
 | 8%     | Chat bots e.g., Alexa Skills (SDK for Alexa AI Assistant)    |
 | 6%     | Internet of Things                                           |
 
+来源：https://www2.eecs.berkeley.edu/Pubs/TechRpts/2019/EECS-2019-3.pdf
 
-## serverless价值
-* 节省长尾应用的使用资源
-* 节省开发运维成本 (如果认为serverless应用包含微服务应用和函数式应用，那么可以用一个平台负责所有业务监控日志自动扩缩容)
-* 
+举例说明：
+
+* 发送通知 push、短信、email
+* webhook
+* 数据分析
+* 定时任务
+
+来源：[什么是serverless无服务?serverless无服务架构原理](https://yuntue.com/post/11683.html)
+
+**serverless与微服务**
+
+来源：[深入浅出Serverless：2 Serverless与相关技术](https://cloud.tencent.com/developer/article/1515318?from=article.detail.1515319)
+
+|          | 微服务                                                   | Serverless                                                   |
+| :------- | :------------------------------------------------------- | :----------------------------------------------------------- |
+| 功能结构 | 最小成员单位是微服务                                     | 最小成员单位是函数                                           |
+| 强调     | 化整为零，提高应用架构灵活度                             | 强调的是“减负”，将服务器移出用户的管理职责范围，降低复杂度和成本 |
+| 成本     | 架构上带来灵活性的同时，也增加了开发、部署和运维的复杂度 | 开发和运维的效率更高，管理成本更低                           |
+
+**serverless与paas**
+
+| PaaS         | Serverless                                                   |                                                              |
+| :----------- | :----------------------------------------------------------- | ------------------------------------------------------------ |
+| 管理颗粒度   | 对应用颗粒度的管理以应用为单位                               | 细致到每个应用的函数                                         |
+| 应用部署模式 | 应用是持续地被部署在主机、虚拟主机、容器                     | 按需部署，这是Serverless的按用量付费（Pay-As-You-Use）模型的基础 |
+| 作业类型     | 包含长时间运行的应用（如各类Web应用和业务系统）和定时执行的短期任务（如数据分析抽取任务） | 偏向于执行时间跨度比较短的任务                               |
+| 实例         | 存在应用实例数这一概念的，用户需要设置每一个实例的CPU和内存的使用大小以及需要的实例数 | 将实例数的概念移除了                                         |
+
+> If your PaaS can efficiently start instances in 20ms that run for half a second, then call it serverless. -- Adrian Cockcroft
+
+来源：[Serverless Architectures](https://martinfowler.com/articles/serverless.html)
 
 ## 关键设计点
 
@@ -68,6 +97,12 @@ serveless调研
 * p2p镜像加速
 
 ### 调度
+
+### 冷启动
+
+* 资源池
+* 轻量级容器
+* 机器学习预测提前创建
 
 
 ### faas落地灵魂3问
@@ -88,6 +123,25 @@ serveless调研
 ![img](https://ucc.alicdn.com/images/lark/0/2021/png/22456429/1633941947549-358cbb19-8ac9-4f85-9a6d-56b2f42e2148.png)
 
 来源：[Serverless 架构模式及演进](https://developer.aliyun.com/article/799135)
+
+### serverless架构优缺点
+
+缺点：
+
+* 不适合长时间运行应用
+* 供应商绑定
+* 开发调试困难
+* 不适合高并发应用
+
+优点：
+
+* 降低创业公司启动成本
+* 减少运营成本
+* 降低开发成本
+* 快速上线
+* 扩展能力强
+
+来源：[什么是serverless无服务?serverless无服务架构原理](https://yuntue.com/post/11683.html)
 
 ## 参考资料：
 
@@ -146,5 +200,15 @@ serveless调研
 * [Serverless架构设计与落地应用](https://developer.jdcloud.com/article/979) (公开课视频形式)
 
 ### 沙箱sandbox相关
-* [基于容器化技术的一个沙箱](https://criyle.github.io/2020/04/29/go-judge/)
-* 
+* [基于容器化技术的一个沙箱](https://criyle.github.io/2020/04/29/go-judge/)  (go-judge用于faas运行时的局限性 [https://github.com/criyle/go-judge/issues/56](https://github.com/criyle/go-judge/issues/56))
+
+### openfaas
+
+运行时
+* 经典watchdog 用完即毁
+* 反向代理watchdog 多次请求复用upstream函数
+* 流模式 512m内存可响应G级别video
+* 静态文件
+
+来源：[OpenFaaS - 以自己的方式运行容器化函数](https://atbug.com/openfaas-case-study-zh/)
+
