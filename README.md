@@ -31,7 +31,7 @@ serveless调研
 
 来源：[深入浅出Serverless：3 Serverless的实现](https://cloud.tencent.com/developer/article/1514868?from=article.detail.1515319)
 
-![img](./img/w5d8ligf32.jpeg)
+![img](https://user-images.githubusercontent.com/21292149/224867675-3908e5a8-932a-448d-bef1-5cac8faa39d1.jpeg)
 
 ## 测评维度：
 
@@ -121,7 +121,7 @@ serveless调研
 
 > 在实践 Serverless 架构时，最重要的心智不是选择哪些流行服务和技术，攻克哪些技术难题，而是时刻铭记在心专注业务逻辑，这样更容易让我们选择合适的技术和服务，明确如何设计应用架构。
 
-![img](./img/1633941947549-358cbb19-8ac9-4f85-9a6d-56b2f42e2148.png)
+![img](https://user-images.githubusercontent.com/21292149/224867644-047b2dee-83d2-4b6b-bae3-fb6250d74d2f.png)
 
 来源：[Serverless 架构模式及演进](https://developer.aliyun.com/article/799135)
 
@@ -221,4 +221,4 @@ serveless调研
 
 * [Serverless 应用实践及典型案例解析](https://pic4.zhimg.com/80/v2-c71a8b7e1078e0399d778c53280ffb93_1440w.webp)
 
-![csr与ssr区别](./img/v2-c71a8b7e1078e0399d778c53280ffb93_1440w.jpg)
+![csr与ssr区别](https://user-images.githubusercontent.com/21292149/224867654-ba703437-9ef4-4294-9723-74f4dfd4e825.jpg)
