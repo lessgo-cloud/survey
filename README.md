@@ -31,7 +31,7 @@ serveless调研
 
 来源：[深入浅出Serverless：3 Serverless的实现](https://cloud.tencent.com/developer/article/1514868?from=article.detail.1515319)
 
-![img](https://ask.qcloudimg.com/http-save/4069641/w5d8ligf32.jpeg?imageView2/2/w/2560/h/7000)
+![img](./img/w5d8ligf32.jpeg)
 
 ## 测评维度：
 
@@ -64,6 +64,7 @@ serveless调研
 * webhook
 * 数据分析
 * 定时任务
+* 对于前端: ssr与serverless结合，减少首屏白屏时间，优化seo
 
 来源：[什么是serverless无服务?serverless无服务架构原理](https://yuntue.com/post/11683.html)
 
@@ -120,7 +121,7 @@ serveless调研
 
 > 在实践 Serverless 架构时，最重要的心智不是选择哪些流行服务和技术，攻克哪些技术难题，而是时刻铭记在心专注业务逻辑，这样更容易让我们选择合适的技术和服务，明确如何设计应用架构。
 
-![img](https://ucc.alicdn.com/images/lark/0/2021/png/22456429/1633941947549-358cbb19-8ac9-4f85-9a6d-56b2f42e2148.png)
+![img](./img/1633941947549-358cbb19-8ac9-4f85-9a6d-56b2f42e2148.png)
 
 来源：[Serverless 架构模式及演进](https://developer.aliyun.com/article/799135)
 
@@ -212,3 +213,12 @@ serveless调研
 
 来源：[OpenFaaS - 以自己的方式运行容器化函数](https://atbug.com/openfaas-case-study-zh/)
 
+### 前端相关 (ssr演变为serverless与ssr结合,进一步演变为前端全栈)
+
+* [彻底理解服务端渲染 - SSR原理](https://github.com/yacan8/blog/issues/30)
+
+> 前后端分离，表面上看上去是代码分离，实际上是为了前后端人员分离，也就是前后端分家，前端不再归属于后端团队。
+
+* [Serverless 应用实践及典型案例解析](https://pic4.zhimg.com/80/v2-c71a8b7e1078e0399d778c53280ffb93_1440w.webp)
+
+![csr与ssr区别](./img/v2-c71a8b7e1078e0399d778c53280ffb93_1440w.jpg)
